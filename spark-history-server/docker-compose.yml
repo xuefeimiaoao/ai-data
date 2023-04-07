@@ -1,0 +1,14 @@
+services:
+  spark-history-server:
+    image: apache/spark
+    ports:
+    # Format: "port of linux : port of docker container"
+    - "18080:18080"
+    command: ["/opt/spark/bin/spark-class", "org.apache.spark.deploy.history.HistoryServer"]
+    restart: always
+    volumes:
+      # Configure your shs by modify the spark-defaults.conf beneath ./conf
+      - "./conf:/opt/spark/conf"
+      # Format: "eventlog dir of linux : eventlog dir of docker container". The latter should 
+      #  be consistent with "spark.history.fs.logDirectory" of spark-defaults.conf
+      - "/data/spark/eventLog:/data/spark/eventLog"

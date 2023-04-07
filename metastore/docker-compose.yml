@@ -1,0 +1,30 @@
+services:
+  mysql:
+    image: mysql:5.7
+    ports:
+    - "3306"
+    restart: always
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - "./mysql:/docker-entrypoint-initdb.d"
+      - "./data:/var/lib/mysql"
+  metastore:
+    image: crazytempo/hive-standalone-metastore:v3.1.0
+    ports:
+    # Format: "port of linux : port of docker container"
+    - "39083:9083"
+    volumes:
+    - type: bind  
+      source: ./metastore-site.xml   # file on host matchine
+      target: /opt/metastore/conf/metastore-site.xml # file on docker container
+    depends_on:
+    - mysql
+    command:
+    - /bin/bash
+    - -ec
+    - |
+      sleep 10
+      /opt/metastore/bin/start-metastore

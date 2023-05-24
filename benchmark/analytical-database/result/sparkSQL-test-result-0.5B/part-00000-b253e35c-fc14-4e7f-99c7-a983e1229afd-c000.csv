@@ -1,0 +1,6 @@
+SELECT count(1) FROM test_view where height = 1170,true,9.044055,
+"select count(1) from ( SELECT EXPLODE(objects) AS exploded_object           FROM test_view ) t where t.exploded_object.shape.shape_type = \"17c112a7fa\"",true,51.88943,
+"select count(1) from ( SELECT EXPLODE(objects) AS exploded_object           FROM test_view ) t where t.exploded_object.classification = \"d6bdcb3634\"",true,49.064182,
+SELECT height FROM test_view where height = 1170,true,9.249859,
+"select t.exploded_object.shape.shape_type from ( SELECT EXPLODE(objects) AS exploded_object           FROM test_view ) t where t.exploded_object.shape.shape_type = \"17c112a7fa\"",true,49.412666,
+"select t.exploded_object.classification from ( SELECT EXPLODE(objects) AS exploded_object           FROM test_view ) t where t.exploded_object.classification = \"d6bdcb3634\"",true,49.324154,

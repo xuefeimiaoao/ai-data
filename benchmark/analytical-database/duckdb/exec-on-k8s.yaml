@@ -1,0 +1,38 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: benchmark-duckdb-     # 使用 generateName 而不是 name
+  namespace: benchmark  
+spec:
+  template:
+    spec:
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
+      nodeSelector:
+        "benchmark-role.cloudwalk.com": "true"        
+      restartPolicy: Never  
+      containers:
+        - name: benchmark-duckdb
+          image: ubuntu:20.04
+          command:
+            - sh
+            - -c
+            - |
+              cd /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/duckdb \
+              && sh pipeline.sh
+          volumeMounts:
+            - name: data
+              mountPath: "/cloudgpfs/dataforge/ml-studio"
+          resources:
+            limits:
+              cpu: "20"
+              memory: 40Gi
+            requests:
+              cpu: "20"
+              memory: 40Gi
+      volumes:
+      - name: data
+        hostPath:
+          path: "/cloudgpfs/dataforge/ml-studio"              

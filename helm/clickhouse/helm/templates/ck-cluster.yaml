@@ -1,0 +1,67 @@
+apiVersion: "clickhouse.altinity.com/v1"
+kind: "ClickHouseInstallation"
+metadata:
+  name: "ck-server"
+spec:
+  configuration:
+    clusters:
+      - name: "test-01"
+        # Templates are specified for this cluster explicitly
+        templates:
+          podTemplate: pod-template-with-volumes
+        layout:
+          type: "PerVolume"      
+          shardsCount: 1
+          replicasCount: 1
+    settings:
+      user_files_path: "/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock" 
+    users:
+      test_user:
+              #password: "${testuser-credentials.testuser-password}"
+        password: "test"
+        networks/ip: "::/0" # Allow any IPs
+        profile: "default"
+        quota: "default"
+        #access_management: "1"      
+
+  templates:
+    podTemplates:
+      - name: pod-template-with-volumes
+        spec:
+          nodeSelector:
+            "benchmark-role.cloudwalk.com": "true"                
+          containers:
+            - name: clickhouse
+              image: clickhouse/clickhouse-server
+              volumeMounts:
+                - name: data-storage-vc-template
+                  mountPath: /cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock
+                - name: log-storage-vc-template
+                  mountPath: /cloudgpfs/dataforge/ml-studio/yckj4506/var/clickhouse/
+              resources:
+                requests:
+                  cpu: "20"
+                  memory: "40Gi"                  
+
+    volumeClaimTemplates:
+      - name: data-storage-vc-template
+        spec:
+          accessModes:
+            - ReadWriteMany
+          resources:
+            requests:
+              storage: 100Gi
+          selector:
+            matchLabels:
+              app.kubernetes.io/name: ck-data              
+      - name: log-storage-vc-template
+        spec:
+          accessModes:
+            - ReadWriteMany
+          resources:
+            requests:
+              storage: 1Gi
+          selector:
+            matchLabels:
+              app.kubernetes.io/name: ck-log
+              

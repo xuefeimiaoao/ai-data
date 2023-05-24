@@ -1,0 +1,12 @@
+apiVersion: v2
+name: cloudwalk-clickhouse
+description: A Helm chart for Clickhouse
+
+type: application
+version: v0.0.1
+appVersion: v0.0.1
+
+dependencies:
+  - name: altinity-clickhouse-operator
+    version: 0.21.0
+    repository: "https://docs.altinity.com/clickhouse-operator"

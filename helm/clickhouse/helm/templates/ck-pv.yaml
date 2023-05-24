@@ -1,0 +1,31 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ck-data
+  labels:
+    type: local
+    app.kubernetes.io/name: ck-data
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock"
+    type: "DirectoryOrCreate"
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ck-log
+  labels:
+    type: local
+    app.kubernetes.io/name: ck-log
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/cloudgpfs/dataforge/ml-studio/yckj4506/var/clickhouse"
+    type: "DirectoryOrCreate"

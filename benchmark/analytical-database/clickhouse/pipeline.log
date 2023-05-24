@@ -1,0 +1,91 @@
+[INFO | 20230529-11:25:10 ] Start to test 0.05b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.05B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.05B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.05B_coalesce/*.parquet', Parquet) where height = 1170] is 0.41594210802577436
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.05B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.05B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 4.799839993007481
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.05B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.05B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 2.2337506231851876
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.05B.csv
+[INFO | 20230529-11:25:49 ] Start to test 0.06b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.06B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.06B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.06B_coalesce/*.parquet', Parquet) where height = 1170] is 0.3950090790167451
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.06B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.06B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 5.56235428689979
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.06B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.06B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 4.219288248103112
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.06B.csv
+[INFO | 20230529-11:26:31 ] Start to test 0.07b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.07B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.07B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.07B_coalesce/*.parquet', Parquet) where height = 1170] is 0.45341814192943275
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.07B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.07B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 6.511720090871677
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.07B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.07B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 5.062245524022728
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.07B.csv
+[INFO | 20230529-11:27:14 ] Start to test 0.08b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.08B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.08B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.08B_coalesce/*.parquet', Parquet) where height = 1170] is 0.4961686988826841
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.08B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.08B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 7.371909874025732
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.08B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.08B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 6.607838538009673
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.08B.csv
+[INFO | 20230529-11:28:00 ] Start to test 0.09b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.09B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.09B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.09B_coalesce/*.parquet', Parquet) where height = 1170] is 0.574277934152633
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.09B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.09B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 8.569170847069472
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.09B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.09B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 8.141660311026499
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.09B.csv
+[INFO | 20230529-11:28:49 ] Start to test 0.1b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.1B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.1B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.1B_coalesce/*.parquet', Parquet) where height = 1170] is 0.614011790137738
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.1B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.1B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 8.780582814011723
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.1B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.1B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 9.124336182139814
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.1B.csv
+[INFO | 20230529-11:29:39 ] Start to test 0.2b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.2B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.2B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.2B_coalesce/*.parquet', Parquet) where height = 1170] is 1.045456503983587
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.2B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.2B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 18.22406466398388
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.2B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.2B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 18.44087203289382
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.2B.csv
+[INFO | 20230529-11:30:48 ] Start to test 0.3b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.3B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.3B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.3B_coalesce/*.parquet', Parquet) where height = 1170] is 1.6464422580320388
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.3B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.3B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 26.906819650204852
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.3B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.3B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 27.543271665927023
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.3B.csv
+[INFO | 20230529-11:32:15 ] Start to test 0.4b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.4B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.4B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.4B_coalesce/*.parquet', Parquet) where height = 1170] is 2.1759780400898308
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.4B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.4B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 37.28845361317508
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.4B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.4B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 36.20520828408189
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.4B.csv
+[INFO | 20230529-11:34:02 ] Start to test 0.5b.
+[DEBUG] Files to read: [/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.5B_coalesce/*.parquet]
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.5B_coalesce/*.parquet', Parquet) where height = 1170
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.5B_coalesce/*.parquet', Parquet) where height = 1170] is 2.6204055820126086
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.5B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.5B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = '17c112a7fa', objects.2.1)] is 46.88062733085826
+[DEBUG] Start to test sql: SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.5B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)
+[DEBUG] execution_time of sql [SELECT count(1) FROM file('/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_0.5B_coalesce/*.parquet', Parquet) where arrayExists(x -> x = 'd6bdcb3634', objects.1)] is 47.04946016892791
+[DEBUG] Start to write results to /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/result/clickhouse/2023_05_29_11/clickhouse-test-result-0.5B.csv
+[INFO | 20230529-11:35:40 ] Succeeded!

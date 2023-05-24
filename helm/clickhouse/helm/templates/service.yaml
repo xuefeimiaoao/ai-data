@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    clickhouse.altinity.com/ready: "yes"
+  labels:
+    clickhouse.altinity.com/Service: chi
+    clickhouse.altinity.com/app: chop
+    clickhouse.altinity.com/chi: ck-server
+    clickhouse.altinity.com/namespace: clickhouse-operator          
+  name: ck-server-service
+  namespace: clickhouse-operator
+spec:
+  ports:
+  - name: tcp
+    port: 9000
+    protocol: TCP
+    targetPort: 9000
+    nodePort: 30009
+  - name: http
+    port: 8123
+    protocol: TCP
+    targetPort: 8123
+    nodePort: 30812
+  - name: interserver
+    port: 9009
+    protocol: TCP
+    targetPort: 9009
+    nodePort: 31900
+  selector:
+    clickhouse.altinity.com/app: chop
+    clickhouse.altinity.com/chi: ck-server
+    clickhouse.altinity.com/namespace: clickhouse-operator
+    clickhouse.altinity.com/ready: "yes"          
+  type: NodePort

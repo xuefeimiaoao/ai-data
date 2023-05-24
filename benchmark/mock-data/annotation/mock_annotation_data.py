@@ -1,7 +1,22 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType, ArrayType, StructType
+import configparser
 import random
+import sys
 import uuid
+
+# 读取配置文件
+config_file = 'config.ini' if len(sys.argv) == 1 else sys.argv[1]
+config = configparser.ConfigParser()
+config.read(config_file)
+
+# 从配置文件获取输出格式和压缩选项
+spark_app_name = config.get('input', 'spark_app_name')
+num_records_per_partition = config.getint('input', 'num_records_per_partition')
+num_partitions = config.getint('input', 'num_partitions')
+file_format = config.get('output', 'format')
+compression = config.get('output', 'compression')
+output_path = config.get('output', 'output_path')
 
 def generate_points():
     points = []
@@ -54,13 +69,10 @@ def generate_record(_):
 
     record = (image_path, relative_path, image_name, width, height, bit_depth, size, format, version, objects)
     return record
-# 貌似executor中的数据不清理，以下这个参数很快就会oom
-num_records_per_partition = 125000
-num_partitions = 8000
 
 # 创建SparkSession
 spark = SparkSession.builder \
-    .appName("Mock Data Generator--1B annotation data") \
+    .appName(spark_app_name) \
     .getOrCreate()
 
 # 生成数据并创建RDD
@@ -92,12 +104,21 @@ schema = StructType([
 ])
 
 # 从RDD创建DataFrame
-df = spark.createDataFrame(data_rdd, schema=schema)
+num_partitions_coalesced = round(num_records_per_partition * num_partitions / 50000000 * 65)
+df = spark.createDataFrame(data_rdd, schema=schema).coalesce(num_partitions_coalesced)
 
+print(output_path)
 # 将数据写入指定目录
-df.write \
-  .option("compression", "gzip") \
-  .json("/cloudgpfs/dataforge/ml-studio/yckj4506/data/dataset/mock/annotation_1B/", mode='overwrite')
+if file_format.lower() == "json":
+    df.write \
+        .option("compression", compression) \
+        .json(output_path, mode='overwrite')
+elif file_format.lower() == "parquet":
+    df.write \
+        .option("compression", compression) \
+        .parquet(output_path, mode='overwrite')
+else:
+    raise ValueError(f"Unsupported file format '{file_format}'. Supported formats are 'json' and 'parquet'.")
 
 # 停止SparkSession
 spark.stop()

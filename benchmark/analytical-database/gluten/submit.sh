@@ -4,19 +4,18 @@
 lighter-submit --name Benchmark-Gluten \
           --deploy-mode cluster \
           --class org.apache.spark.deploy.PythonRunner \
-	  --conf spark.driver.memory=6g \
-	  --conf spark.kubernetes.container.image=crazytempo/spark-py-gluten:v3.2.2-0.5.0-dev \
-	  --conf spark.cleaner.referenceTracking.cleanCheckpoints=false \
+	  --conf spark.driver.memory=4g \
+	  --conf spark.kubernetes.container.image=crazytempo/spark-py-gluten:v3.3.1-0.5.0 \
 	  --conf spark.plugins=io.glutenproject.GlutenPlugin \
 	  --conf spark.gluten.sql.columnar.backend.lib=velox \
           --conf spark.memory.offHeap.enabled=true \
           --conf spark.memory.offHeap.size=20g \
           --conf spark.gluten.loadLibFromJar=true \
+	  --conf spark.gluten.sql.columnar.forceShuffledHashJoin=true \
           --conf spark.shuffle.manager=org.apache.spark.shuffle.sort.ColumnarShuffleManager \
-	  --conf spark.kubernetes.executor.node.selector.spark-role.cloudwalk.com/overwhelm=true \
 	  --conf spark.executor.instances=1 \
 	  --conf spark.executor.cores=20 \
-	  --conf spark.executor.memory=40g \
+	  --conf spark.executor.memory=20g \
           --conf spark.kubernetes.driver.volumes.hostPath.dataforge.options.path=/cloudgpfs/dataforge/ml-studio \
           --conf spark.kubernetes.driver.volumes.hostPath.dataforge.mount.path=/cloudgpfs/dataforge/ml-studio \
           --conf spark.kubernetes.executor.volumes.hostPath.dataforge.options.path=/cloudgpfs/dataforge/ml-studio \
@@ -26,8 +25,8 @@ lighter-submit --name Benchmark-Gluten \
 	  --conf spark.kubernetes.executor.volumes.hostPath.var.options.path=/cloudgpfs/dataforge/spark/var \
           --conf spark.kubernetes.executor.volumes.hostPath.var.mount.path=/var/data \
           --conf spark.kubernetes.file.upload.path=/spark/tmp/upload \
-          --conf spark.kubernetes.driver.node.selector.spark-role.cloudwalk.com/executor=true \
-          --conf spark.kubernetes.executor.node.selector.spark-role.cloudwalk.com/executor=true \
+          --conf spark.kubernetes.driver.node.selector.benchmark-role.cloudwalk.com=true \
+          --conf spark.kubernetes.executor.node.selector.benchmark-role.cloudwalk.com=true \
           --conf spark.eventLog.enabled=true \
           --conf spark.eventLog.dir=/spark/eventLog \
           --conf spark.history.fs.logDirectory=/spark/eventLog \

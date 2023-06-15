@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: spark-driver-headless-service
+spec:
+  clusterIP: None
+  selector:
+    app: gen-tpch-driver
+  ports:
+    - name: driver-rpc-port
+      port: 7077
+      targetPort: 7077

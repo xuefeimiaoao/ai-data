@@ -1,0 +1,37 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: gen-tpch-parquet-     # 使用 generateName 而不是 name
+  namespace: benchmark  
+spec:
+  backoffLimit: 0      
+  template:
+    metadata:
+      labels:
+        app: gen-tpch-driver          
+    spec:
+      serviceAccountName: spark      
+      securityContext:
+        runAsUser: 0
+        runAsGroup: 0
+        fsGroup: 0
+      nodeSelector:
+        "benchmark-role.cloudwalk.com": "true"        
+      restartPolicy: Never  
+      containers:
+        - name: gen-tpch-parquet
+          image: apache/spark-py:v3.3.2
+          command: ["sh", "-c", "while true; do sleep 5; done"]
+                  #cd /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/mock-data/benchmark_fork_from_gluten \
+              #sh tpch_datagen_parquet.sh
+          volumeMounts:
+            - name: data
+              mountPath: "/cloudgpfs/dataforge/ml-studio"
+          resources:
+            requests:
+              cpu: "10"
+              memory: 50Gi
+      volumes:
+      - name: data
+        hostPath:
+          path: "/cloudgpfs/dataforge/ml-studio"

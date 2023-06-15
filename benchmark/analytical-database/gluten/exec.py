@@ -1,3 +1,4 @@
+from datetime import datetime
 from pyspark.sql import SparkSession
 from pyspark.sql import functions as F
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType, ArrayType, StructType, BooleanType
@@ -15,15 +16,23 @@ config.read(config_file)
 file_format = config.get('input', 'format')
 input_path = config.get('input', 'input_path')
 sql_file_path = config.get('input', 'sql_file_path')
+view_name = config.get('input', 'view_name')
 output_file = config.get('output', 'output_file_path')
+
+current_time = datetime.now().strftime('%Y_%m_%d_%H')
+output_file = output_file.format(current_time)
 
 # 创建SparkSession
 spark = SparkSession.builder \
-    .appName("Benchmark Spark Gluten") \
+    .appName("Benchmark SparkSQL-Gluten") \
     .getOrCreate()
 
+test_df = spark.read.parquet(f"{input_path}/*.parquet")
+# 创建临时表
+test_df.createOrReplaceTempView(view_name)
+
 # 读取文件并根据分号分割 SQL 查询
-with open(file_name, 'r') as file:
+with open(sql_file_path, 'r') as file:
     file_content = file.read()
     test_sql_lines = file_content.replace('\n', ' ').split(';')
 
@@ -50,6 +59,7 @@ results_df = spark.createDataFrame(spark.sparkContext.emptyRDD(), schema=results
 
 for test_sql in test_sql_lines:
     test_sql = test_sql.strip()
+    test_sql = test_sql.format(view_name)
     if not test_sql:
         continue
 
@@ -61,5 +71,5 @@ for test_sql in test_sql_lines:
         new_row = spark.createDataFrame([(test_sql, False, None, str(e))], schema=results_schema)
         results_df = results_df.union(new_row)
 
-# 将结果保存为 Parquet 格式的文件
-results_df.write.mode("overwrite").parquet(output_file)
+# 将结果保存为 csv 格式的文件
+results_df.coalesce(1).write.mode("overwrite").csv(output_file)

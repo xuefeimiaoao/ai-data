@@ -19,7 +19,7 @@ sql_file_path = config.get('input', 'sql_file_path')
 view_name = config.get('input', 'view_name')
 output_file = config.get('output', 'output_file_path')
 
-current_time = datetime.now().strftime('%Y_%m_%d_%H_%M_%S_%f')[:-3]
+current_time = datetime.now().strftime('%Y_%m_%d_%H')
 output_file = output_file.format(current_time)
 
 # 创建SparkSession
@@ -59,6 +59,7 @@ results_df = spark.createDataFrame(spark.sparkContext.emptyRDD(), schema=results
 
 for test_sql in test_sql_lines:
     test_sql = test_sql.strip()
+    test_sql = test_sql.format(view_name)
     if not test_sql:
         continue
 

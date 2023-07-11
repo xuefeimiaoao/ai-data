@@ -21,6 +21,6 @@ ${SPARK_SUBMIT} --name Mock-Data-Generator \
           --conf spark.eventLog.enabled=true \
           --conf spark.eventLog.dir=${SPARK_EVENTLOG_DIR} \
           --conf spark.history.fs.logDirectory=${SPARK_EVENTLOG_DIR} \
-	  --conf spark.task.maxFailures=10 \
+	  --conf spark.task.maxFailures=20 \
           ${BENCHMARK_HOME}/benchmark/mock-data/annotation/mock_annotation_data.py \
 	  ${BENCHMARK_OUTPUT} ${BENCHMARK_HOME}/benchmark/mock-data/annotation/$1 

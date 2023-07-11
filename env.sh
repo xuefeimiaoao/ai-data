@@ -21,7 +21,7 @@ export SPARK_K8S_UPLOAD_PATH="${BENCHMARK_HOME}/runtime/spark/upload"
 
 mkdir_if_exists() {
   local dir_to_create=$1	
-  if [ -f ${dir_to_create} ]; then
+  if [ -d ${dir_to_create} ]; then
 	  echo "[INFO] ${dir_to_create} already exists."	  
   else
 	  mkdir -p ${dir_to_create}

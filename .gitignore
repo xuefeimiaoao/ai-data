@@ -1,3 +1,4 @@
 benchmark/analytical-database/result
 benchmark/analytical-database/*.png
 benchmark/analytical-database/*.log
+runtime

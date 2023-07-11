@@ -1,4 +1,0 @@
-Forwarding from 127.0.0.1:9191 -> 9000
-Forwarding from [::1]:9191 -> 9000
-Handling connection for 9191
-E0609 20:33:00.933429   17321 portforward.go:233] lost connection to pod

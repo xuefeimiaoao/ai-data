@@ -1,7 +1,7 @@
 #!/bin/bash
-# lighter-submit is an encapsulation of spark-submit, and acts as spark-submit
 # usage: ./submit.sh config/0.5b_config.ini
-lighter-submit --name Benchmark-Gluten \
+. ../../../env.sh 
+${SPARK_SUBMIT} --name Benchmark-Gluten \
           --deploy-mode cluster \
           --class org.apache.spark.deploy.PythonRunner \
 	  --conf spark.driver.memory=4g \
@@ -16,22 +16,15 @@ lighter-submit --name Benchmark-Gluten \
 	  --conf spark.executor.instances=1 \
 	  --conf spark.executor.cores=20 \
 	  --conf spark.executor.memory=20g \
-          --conf spark.kubernetes.driver.volumes.hostPath.dataforge.options.path=/cloudgpfs/dataforge/ml-studio \
-          --conf spark.kubernetes.driver.volumes.hostPath.dataforge.mount.path=/cloudgpfs/dataforge/ml-studio \
-          --conf spark.kubernetes.executor.volumes.hostPath.dataforge.options.path=/cloudgpfs/dataforge/ml-studio \
-          --conf spark.kubernetes.executor.volumes.hostPath.dataforge.mount.path=/cloudgpfs/dataforge/ml-studio \
-	  --conf spark.kubernetes.driver.volumes.hostPath.var.options.path=/cloudgpfs/dataforge/spark/var \
-	  --conf spark.kubernetes.driver.volumes.hostPath.var.mount.path=/var/data \
-	  --conf spark.kubernetes.executor.volumes.hostPath.var.options.path=/cloudgpfs/dataforge/spark/var \
-          --conf spark.kubernetes.executor.volumes.hostPath.var.mount.path=/var/data \
-          --conf spark.kubernetes.file.upload.path=/spark/tmp/upload \
-          --conf spark.kubernetes.driver.node.selector.benchmark-role.cloudwalk.com=true \
-          --conf spark.kubernetes.executor.node.selector.benchmark-role.cloudwalk.com=true \
+          --conf spark.kubernetes.driver.volumes.hostPath.benchmark.options.path=${BENCHMARK_HOME} \
+          --conf spark.kubernetes.driver.volumes.hostPath.benchmark.mount.path=${BENCHMARK_HOME} \
+          --conf spark.kubernetes.executor.volumes.hostPath.benchmark.options.path=${BENCHMARK_HOME} \
+          --conf spark.kubernetes.executor.volumes.hostPath.benchmark.mount.path=${BENCHMARK_HOME} \
+          --conf spark.kubernetes.file.upload.path=${SPARK_K8S_UPLOAD_PATH} \
+          --conf spark.kubernetes.driver.node.selector.${BENCHMARK_LABEL} \
+          --conf spark.kubernetes.executor.node.selector.${BENCHMARK_LABEL} \
           --conf spark.eventLog.enabled=true \
-          --conf spark.eventLog.dir=/spark/eventLog \
-          --conf spark.history.fs.logDirectory=/spark/eventLog \
-          /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/gluten/exec.py \
-	  /cloudgpfs/dataforge/ml-studio/yckj4506/git/bigdata-dev-tools/benchmark/analytical-database/gluten/$1
-
-          #--conf spark.archives=/cloudgpfs/dataforge/ml-studio/yckj4506/venv/conda-numpy-env.tar.gz#environment \
-          #--conf spark.pyspark.python=./environment/bin/python \
+          --conf spark.eventLog.dir=${SPARK_EVENTLOG_DIR} \
+          --conf spark.history.fs.logDirectory=${SPARK_EVENTLOG_DIR} \
+          ${BENCHMARK_HOME}/benchmark/analytical-database/gluten/exec.py \
+	  ${BENCHMARK_HOME}/benchmark/analytical-database/gluten/$1

@@ -1,12 +1,15 @@
 from pyspark.sql import SparkSession
 from pyspark.sql.types import StructType, StructField, StringType, IntegerType, FloatType, ArrayType, StructType
 import configparser
+import os
 import random
 import sys
 import uuid
 
 # 读取配置文件
-config_file = 'config.ini' if len(sys.argv) == 1 else sys.argv[1]
+benchmark_output = sys.argv[1]
+config_file = 'config.ini' if len(sys.argv) == 2 else sys.argv[2]
+
 config = configparser.ConfigParser()
 config.read(config_file)
 
@@ -16,7 +19,8 @@ num_records_per_partition = config.getint('input', 'num_records_per_partition')
 num_partitions = config.getint('input', 'num_partitions')
 file_format = config.get('output', 'format')
 compression = config.get('output', 'compression')
-output_path = config.get('output', 'output_path')
+output_path = config.get('output', 'output_file')
+output_path = os.path.join(benchmark_output, output_path)
 embedding_array_len = config.getint('output', 'embedding_array_len')
 
 def generate_points():
@@ -50,7 +54,7 @@ def generate_record(_):
     
     unique_id = uuid.uuid4().hex
     image_name = f"{unique_id}.jpg"
-    image_path = f"/workspace/AI2/datasets/raw_data/{unique_id}/{image_name}"
+    image_path = f"/workspace/AI/datasets/raw_data/{unique_id}/{image_name}"
     relative_path = f"/{unique_id}/{image_name}"
     width = int(720 * random.uniform(0.8, 1.2))
     height = int(1028 * random.uniform(0.8, 1.2))
@@ -60,7 +64,7 @@ def generate_record(_):
     version = random.choice(["v1", "v2", "v3", "v4", "v5"])
 
     # num_objects = random.randint(1, 6)
-    num_objects = embedding_array_len
+    num_objects = random.randint(1, embedding_array_len)
     objects = [{"classification": generate_classification(wordpool_class),
                 "shape": {
                     "shape_type": generate_shape_type(wordpool),
